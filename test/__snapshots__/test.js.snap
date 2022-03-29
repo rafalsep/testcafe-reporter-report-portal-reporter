@@ -1,0 +1,346 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Should call sendLog on error 1`] = `
+[
+  [
+    "FIRST_TEST_IN_FIRST_FIXTURE_ID",
+    {
+      "message": "Error Screenshot 1",
+      "status": "error",
+      "time": 1590922816323,
+    },
+    {
+      "content": "/screenshots/1445437598847",
+      "name": "First test in first fixture.png",
+      "type": "image/png",
+    },
+  ],
+  [
+    "FIRST_TEST_IN_FIRST_FIXTURE_ID",
+    {
+      "message": "Test Video 1",
+      "status": "info",
+      "time": 1590922816323,
+    },
+    {
+      "content": "/videos/1445437598847",
+      "name": "First test in first fixture.mp4\\"",
+      "type": "video/mp4",
+    },
+  ],
+  [
+    "SECOND_TEST_IN_FIRST_FIXTURE_ID",
+    {
+      "message": "Error Screenshot 1",
+      "status": "error",
+      "time": 1590922816323,
+    },
+    {
+      "content": "/screenshots/1445433398847",
+      "name": "Second test in first fixture.png",
+      "type": "image/png",
+    },
+  ],
+  [
+    "SECOND_TEST_IN_FIRST_FIXTURE_ID",
+    {
+      "message": "Test Video 1",
+      "status": "info",
+      "time": 1590922816323,
+    },
+    {
+      "content": "/videos/1445433398847",
+      "name": "Second test in first fixture.mp4\\"",
+      "type": "video/mp4",
+    },
+  ],
+  [
+    "SECOND_TEST_IN_FIRST_FIXTURE_ID",
+    {
+      "message": "undefinedA JavaScript error occurred on \\"http://example.org\\".
+Repeat test actions in the browser and check the console for errors.
+To ignore client-side JavaScript errors, enable the \\"--skip-js-errors\\" CLI option, or set the \\"skipJsErrors\\" configuration file property to \\"true\\".
+If the website only throws this error when you test it with TestCafe, please create a new issue at:
+\\"https://github.com/DevExpress/testcafe/issues/new?template=bug-report.md\\".
+
+JavaScript error details:
+Some error
+
+Browser: Chrome 41.0.2227 / Mac OS X 10.10.1
+Screenshot: /screenshots/1445437598847/errors",
+      "status": "error",
+    },
+  ],
+  [
+    "SECOND_TEST_IN_FIRST_FIXTURE_ID",
+    {
+      "message": "undefinedThe specified selector does not match any element in the DOM tree.
+
+   | one
+ > |   two
+   |   three
+
+Browser: Firefox 47 / Mac OS X 10.10.1",
+      "status": "error",
+    },
+  ],
+  [
+    "FIRST_TEST_IN_THIRD_FIXTURE_ID",
+    {
+      "message": "undefinedThe specified selector does not match any element in the DOM tree.
+
+   | one
+ > |   two
+   |   three
+
+Browser: Firefox 47 / Mac OS X 10.10.1",
+      "status": "error",
+    },
+  ],
+]
+`;
+
+exports[`Should validate finishLaunch 1`] = `
+[
+  [
+    "1234",
+  ],
+]
+`;
+
+exports[`Should validate finishTestItem 1`] = `
+[
+  [
+    "FIRST_TEST_IN_FIRST_FIXTURE_ID",
+    {
+      "status": "passed",
+    },
+  ],
+  [
+    "SECOND_TEST_IN_FIRST_FIXTURE_ID",
+    {
+      "status": "failed",
+    },
+  ],
+  [
+    "THIRD_TEST_IN_FIRST_FIXTURE_ID",
+    {
+      "status": "passed",
+    },
+  ],
+  [
+    "FIRST_FIXTURE_ID",
+  ],
+  [
+    "FIRST_TEST_IN_SECOND_FIXTURE_ID",
+    {
+      "status": "passed",
+    },
+  ],
+  [
+    "SECOND_TEST_IN_SECOND_FIXTURE_ID",
+    {
+      "status": "passed",
+    },
+  ],
+  [
+    "THIRD_TEST_IN_SECOND_FIXTURE_ID",
+    {
+      "status": "passed",
+    },
+  ],
+  [
+    "SECOND_FIXTURE_ID",
+  ],
+  [
+    "FIRST_TEST_IN_THIRD_FIXTURE_ID",
+    {
+      "status": "failed",
+    },
+  ],
+  [
+    "THIRD_FIXTURE_ID",
+  ],
+]
+`;
+
+exports[`Should validate startLaunch 1`] = `
+[MockFunction] {
+  "calls": [
+    [
+      {
+        "description": "REPORT_PORTAL_DESCRIPTION",
+        "name": "REPORT_PORTAL_LAUNCH_NAME",
+      },
+    ],
+  ],
+  "results": [
+    {
+      "type": "return",
+      "value": {
+        "tempId": "1234",
+      },
+    },
+  ],
+}
+`;
+
+exports[`Should validate startTestItem 1`] = `
+[MockFunction] {
+  "calls": [
+    [
+      {
+        "name": "First fixture",
+        "type": "SUITE",
+      },
+      "1234",
+    ],
+    [
+      {
+        "attributes": {},
+        "name": "First test in first fixture",
+        "type": "STEP",
+      },
+      "1234",
+      "FIRST_FIXTURE_ID",
+    ],
+    [
+      {
+        "attributes": {
+          "device": "android",
+          "module": "test",
+          "type": "FFT",
+        },
+        "name": "Second test in first fixture",
+        "type": "STEP",
+      },
+      "1234",
+      "FIRST_FIXTURE_ID",
+    ],
+    [
+      {
+        "attributes": {},
+        "name": "Third test in first fixture",
+        "type": "STEP",
+      },
+      "1234",
+      "FIRST_FIXTURE_ID",
+    ],
+    [
+      {
+        "name": "Second fixture",
+        "type": "SUITE",
+      },
+      "1234",
+    ],
+    [
+      {
+        "attributes": {},
+        "name": "First test in second fixture",
+        "type": "STEP",
+      },
+      "1234",
+      "SECOND_FIXTURE_ID",
+    ],
+    [
+      {
+        "attributes": {},
+        "name": "Second test in second fixture",
+        "type": "STEP",
+      },
+      "1234",
+      "SECOND_FIXTURE_ID",
+    ],
+    [
+      {
+        "attributes": {},
+        "name": "Third test in second fixture",
+        "type": "STEP",
+      },
+      "1234",
+      "SECOND_FIXTURE_ID",
+    ],
+    [
+      {
+        "name": "Third fixture",
+        "type": "SUITE",
+      },
+      "1234",
+    ],
+    [
+      {
+        "attributes": {
+          "module": "login",
+          "type": "FFT",
+        },
+        "name": "First test in third fixture",
+        "type": "STEP",
+      },
+      "1234",
+      "THIRD_FIXTURE_ID",
+    ],
+  ],
+  "results": [
+    {
+      "type": "return",
+      "value": {
+        "tempId": "FIRST_FIXTURE_ID",
+      },
+    },
+    {
+      "type": "return",
+      "value": {
+        "tempId": "FIRST_TEST_IN_FIRST_FIXTURE_ID",
+      },
+    },
+    {
+      "type": "return",
+      "value": {
+        "tempId": "SECOND_TEST_IN_FIRST_FIXTURE_ID",
+      },
+    },
+    {
+      "type": "return",
+      "value": {
+        "tempId": "THIRD_TEST_IN_FIRST_FIXTURE_ID",
+      },
+    },
+    {
+      "type": "return",
+      "value": {
+        "tempId": "SECOND_FIXTURE_ID",
+      },
+    },
+    {
+      "type": "return",
+      "value": {
+        "tempId": "FIRST_TEST_IN_SECOND_FIXTURE_ID",
+      },
+    },
+    {
+      "type": "return",
+      "value": {
+        "tempId": "SECOND_TEST_IN_SECOND_FIXTURE_ID",
+      },
+    },
+    {
+      "type": "return",
+      "value": {
+        "tempId": "THIRD_TEST_IN_SECOND_FIXTURE_ID",
+      },
+    },
+    {
+      "type": "return",
+      "value": {
+        "tempId": "THIRD_FIXTURE_ID",
+      },
+    },
+    {
+      "type": "return",
+      "value": {
+        "tempId": "FIRST_TEST_IN_THIRD_FIXTURE_ID",
+      },
+    },
+  ],
+}
+`;

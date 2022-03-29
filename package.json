@@ -1,0 +1,61 @@
+{
+  "name": "testcafe-reporter-report-portal",
+  "version": "1.0.0",
+  "description": "report-portal TestCafe reporter plugin.",
+  "repository": "https://github.com/rafalsep/testcafe-reporter-report-portal",
+  "author": {
+    "name": "Rafal Szczepankiewicz"
+  },
+  "main": "src/index",
+  "files": [
+    "src"
+  ],
+  "scripts": {
+    "prettier": "prettier --write '{src,test}/**/*.js'",
+    "test": "jest",
+    "lint": "eslint {src,test}/**/*.js",
+    "publish-please": "publish-please",
+    "prepublish": "publish-please guard"
+  },
+  "keywords": [
+    "testcafe",
+    "reporter",
+    "plugin",
+    "report portal"
+  ],
+  "license": "MIT",
+  "devDependencies": {
+    "@reportportal/client-javascript": "5.0.6",
+    "babel-eslint": "10.0.1",
+    "callsite-record": "4.1.4",
+    "eslint": "7.32.0",
+    "eslint-config-prettier": "8.5.0",
+    "eslint-plugin-prettier": "4.0.0",
+    "jest": "27.5.1",
+    "prettier": "2.6.1",
+    "publish-please": "5.5.2",
+    "strip-ansi": "6.0.1",
+    "testcafe": "1.18.4"
+  },
+  "jest": {
+    "roots": ["src", "test"],
+    "snapshotFormat": {
+      "printBasicPrototype": false
+    },
+    "collectCoverageFrom": [
+      "src/*.js",
+      "!node_modules/**",
+      "!test/**"
+    ],
+    "coverageReporters": [
+      "lcov",
+      [
+        "html",
+        {
+          "skipEmpty": true
+        }
+      ],
+      "text-summary"
+    ]
+  }
+}
