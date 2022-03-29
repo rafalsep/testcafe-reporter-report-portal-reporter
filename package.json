@@ -13,6 +13,7 @@
   "scripts": {
     "prettier": "prettier --write '{src,test}/**/*.js'",
     "test": "jest",
+    "test:update": "jest -u",
     "test:coverage": "jest",
     "lint": "eslint {src,test}/**/*.js",
     "lint:fix": "eslint {src,test}/**/*.js --fix"

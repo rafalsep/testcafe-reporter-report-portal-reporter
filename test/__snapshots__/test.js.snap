@@ -5,9 +5,8 @@ exports[`Should call sendLog on error 1`] = `
   [
     "FIRST_TEST_IN_FIRST_FIXTURE_ID",
     {
-      "message": "Error Screenshot 1",
-      "status": "error",
-      "time": 1590922816323,
+      "message": "Test Screenshot 1",
+      "status": "info",
     },
     {
       "content": "/screenshots/1445437598847",
@@ -18,9 +17,8 @@ exports[`Should call sendLog on error 1`] = `
   [
     "FIRST_TEST_IN_FIRST_FIXTURE_ID",
     {
-      "message": "Test Video 1",
+      "message": "Test Recording 1",
       "status": "info",
-      "time": 1590922816323,
     },
     {
       "content": "/videos/1445437598847",
@@ -31,9 +29,8 @@ exports[`Should call sendLog on error 1`] = `
   [
     "SECOND_TEST_IN_FIRST_FIXTURE_ID",
     {
-      "message": "Error Screenshot 1",
-      "status": "error",
-      "time": 1590922816323,
+      "message": "Test Screenshot 1",
+      "status": "info",
     },
     {
       "content": "/screenshots/1445433398847",
@@ -44,9 +41,8 @@ exports[`Should call sendLog on error 1`] = `
   [
     "SECOND_TEST_IN_FIRST_FIXTURE_ID",
     {
-      "message": "Test Video 1",
+      "message": "Test Recording 1",
       "status": "info",
-      "time": 1590922816323,
     },
     {
       "content": "/videos/1445433398847",
@@ -104,6 +100,7 @@ exports[`Should validate finishLaunch 1`] = `
 [
   [
     "1234",
+    undefined,
   ],
 ]
 `;
@@ -197,7 +194,7 @@ exports[`Should validate startTestItem 1`] = `
     ],
     [
       {
-        "attributes": {},
+        "attributes": [],
         "name": "First test in first fixture",
         "type": "STEP",
       },
@@ -206,11 +203,20 @@ exports[`Should validate startTestItem 1`] = `
     ],
     [
       {
-        "attributes": {
-          "device": "android",
-          "module": "test",
-          "type": "FFT",
-        },
+        "attributes": [
+          {
+            "key": "type",
+            "value": "FFT",
+          },
+          {
+            "key": "module",
+            "value": "test",
+          },
+          {
+            "key": "device",
+            "value": "android",
+          },
+        ],
         "name": "Second test in first fixture",
         "type": "STEP",
       },
@@ -219,7 +225,7 @@ exports[`Should validate startTestItem 1`] = `
     ],
     [
       {
-        "attributes": {},
+        "attributes": [],
         "name": "Third test in first fixture",
         "type": "STEP",
       },
@@ -235,7 +241,7 @@ exports[`Should validate startTestItem 1`] = `
     ],
     [
       {
-        "attributes": {},
+        "attributes": [],
         "name": "First test in second fixture",
         "type": "STEP",
       },
@@ -244,7 +250,7 @@ exports[`Should validate startTestItem 1`] = `
     ],
     [
       {
-        "attributes": {},
+        "attributes": [],
         "name": "Second test in second fixture",
         "type": "STEP",
       },
@@ -253,7 +259,7 @@ exports[`Should validate startTestItem 1`] = `
     ],
     [
       {
-        "attributes": {},
+        "attributes": [],
         "name": "Third test in second fixture",
         "type": "STEP",
       },
@@ -269,10 +275,20 @@ exports[`Should validate startTestItem 1`] = `
     ],
     [
       {
-        "attributes": {
-          "module": "login",
-          "type": "FFT",
-        },
+        "attributes": [
+          {
+            "key": "type",
+            "value": "FFT",
+          },
+          {
+            "key": "type",
+            "value": "ST",
+          },
+          {
+            "key": "module",
+            "value": "login",
+          },
+        ],
         "name": "First test in third fixture",
         "type": "STEP",
       },

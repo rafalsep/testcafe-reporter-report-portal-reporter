@@ -35,11 +35,7 @@ class ReportPortalService {
       testRunInfo.screenshots.forEach((screenshot, screenshotIndex) => {
         try {
           const screenshotContent = fs.readFileSync(screenshot.screenshotPath);
-          this.rpClient.sendLog(
-            rpTestId,
-            { status: 'error', message: `Error Screenshot ${screenshotIndex + 1}`, time: this.rpClient.helpers.now() },
-            { name: `${name}.png`, type: 'image/png', content: screenshotContent },
-          );
+          this.rpClient.sendLog(rpTestId, { status: 'info', message: `Test Screenshot ${screenshotIndex + 1}` }, { name: `${name}.png`, type: 'image/png', content: screenshotContent });
         } catch (error) {
           console.error('Unable to send error screenshot to report portal', error);
         }
@@ -50,11 +46,7 @@ class ReportPortalService {
       testRunInfo.videos.forEach((video, videoIndex) => {
         try {
           const videoContent = fs.readFileSync(video.videoPath);
-          this.rpClient.sendLog(
-            rpTestId,
-            { status: 'info', message: `Test Video ${videoIndex + 1}`, time: this.rpClient.helpers.now() },
-            { name: `${name}.mp4"`, type: 'video/mp4', content: videoContent },
-          );
+          this.rpClient.sendLog(rpTestId, { status: 'info', message: `Test Recording ${videoIndex + 1}` }, { name: `${name}.mp4"`, type: 'video/mp4', content: videoContent });
         } catch (error) {
           console.error('Unable to send test video to report portal', error);
         }
@@ -72,15 +64,15 @@ class ReportPortalService {
       status = errors.length > 0 ? 'failed' : 'passed';
     }
 
-    this.rpClient.finishTestItem(rpTestId, { status, ...status === 'skipped' ? { issue_type: 'NOT_ISSUE' } : {} });
+    this.rpClient.finishTestItem(rpTestId, { status, ...(status === 'skipped' ? { issue_type: 'NOT_ISSUE' } : {}) });
   }
 
   finishFixture({ fixtureId }) {
     this.rpClient.finishTestItem(fixtureId);
   }
 
-  async finishLaunch(launchId) {
-    await this.rpClient.finishLaunch(launchId);
+  async finishLaunch(launchId, status) {
+    await this.rpClient.finishLaunch(launchId, status);
   }
 }
 

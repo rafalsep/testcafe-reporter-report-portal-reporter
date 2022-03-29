@@ -4,10 +4,7 @@ const getReportPortalInstance = require('./reportPortalInstanceProvider');
 const parseMeta = meta =>
   Object.entries(meta)
     .filter(([, value]) => value)
-    .reduce((acc, [key, value]) => {
-      acc[key] = Array.isArray(value) ? value[0] : value;
-      return acc;
-    }, {});
+    .reduce((acc, [key, value]) => acc.concat(Array.isArray(value) ? value.map(obj => ({ key, value: obj })) : [{ key, value }]), []);
 
 const TEST_STATUSES = {
   STARTED: 'started',
@@ -73,6 +70,12 @@ const reportPortalReporter = () => ({
       await this.productReport.finishLaunch(this.launchId);
     }
   },
+});
+
+process.on('exit', async code => {
+  if (code > 128) {
+    await this.productReport.finishLaunch(this.launchId);
+  }
 });
 
 module.exports = reportPortalReporter;

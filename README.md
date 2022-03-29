@@ -11,8 +11,13 @@ This is the [report-portal](https://reportportal.io/) reporter plugin for [TestC
 - mimics testcafe features and tests structure in report portal
 - the only plugin that supports concurrency
 - supports sending screenshots and videos recoded by testcafe to report portal
-- test metadata is propagated to report portal and can be used to build effective dashboards
-- reports run and test time accurately
+- test metadata (string or array) is propagated to report portal and can be used to build effective dashboards
+- propagates actual test and fixture execution time to report portal (see note)
+- supports quarantine mode (adds multiple screenshots and one video containing all attempts)
+
+### Note
+When running tests using `concurrency > 1` testcafe hook `reportTestDone` is called for all tests at the same time after last test finishes.
+This causes all tests from that fixture to have the exact same execution time.
 
 ## Prerequisite
 In order to use Report Portal plugin for testcafe, [Report Portal](https://reportportal.io/) need to installed first. Follow [setup in official docs](https://reportportal.io/installation) for installation instructions.
