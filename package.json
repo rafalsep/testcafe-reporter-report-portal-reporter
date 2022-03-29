@@ -1,8 +1,8 @@
 {
-  "name": "testcafe-reporter-report-portal",
+  "name": "testcafe-reporter-report-portal-reporter",
   "version": "1.0.0",
   "description": "report-portal TestCafe reporter plugin.",
-  "repository": "https://github.com/rafalsep/testcafe-reporter-report-portal",
+  "repository": "https://github.com/rafalsep/testcafe-reporter-report-portal-reporter",
   "author": {
     "name": "Rafal Szczepankiewicz"
   },

@@ -1,10 +1,10 @@
-# testcafe-reporter-report-portal
-[![Build Status](https://travis-ci.org/rafalsep/testcafe-reporter-report-portal.svg)](https://travis-ci.org/rafalsep/testcafe-reporter-report-portal)
+# testcafe-reporter-report-portal-reporter
+[![Build Status](https://travis-ci.org/rafalsep/testcafe-reporter-report-portal-reporter.svg)](https://travis-ci.org/rafalsep/testcafe-reporter-report-portal-reporter)
 
 This is the [report-portal](https://reportportal.io/) reporter plugin for [TestCafe](http://devexpress.github.io/testcafe).
 
 <p align="center">
-    <img src="https://raw.github.com/rafalsep/testcafe-reporter-report-portal/master/media/preview.png" alt="preview" />
+    <img src="https://raw.github.com/rafalsep/testcafe-reporter-report-portal-reporter/master/media/preview.png" alt="preview" />
 </p>
 
 ## Features
