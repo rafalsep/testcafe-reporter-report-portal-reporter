@@ -19,7 +19,7 @@ In order to use Report Portal plugin for testcafe, [Report Portal](https://repor
 
 ## Install
 ```
-npm install testcafe-reporter-report-portal
+npm install testcafe-reporter-report-portal-reporter
 ```
 
 ## Setup
@@ -37,7 +37,7 @@ Once installed add required env variables to use the plugin. Good idea is to use
 When you run tests from the command line, specify the reporter name by using the `--reporter` option:
 
 ```
-testcafe chrome 'path/to/test/file.js' --reporter report-portal
+testcafe chrome 'path/to/test/file.js' --reporter report-portal-reporter
 ```
 
 
@@ -48,7 +48,7 @@ testCafe
     .createRunner()
     .src('path/to/test/file.js')
     .browsers('chrome')
-    .reporter('report-portal') // <-
+    .reporter('report-portal-reporter') // <-
     .run();
 ```
 
