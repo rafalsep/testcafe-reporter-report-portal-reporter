@@ -5,7 +5,7 @@ const fs = require('fs');
 jest.mock('@reportportal/client-javascript');
 jest.mock('fs', () => ({
   ...jest.requireActual('fs'),
-  readFileSync: jest.fn(path => (path.includes('screenshots') || path.includes('videos') ? path : '{}')),
+  readFileSync: jest.fn(path => path.includes('screenshots') || path.includes('videos') ? path : '{}'),
   readdirSync: jest.fn(() => []),
 }));
 
