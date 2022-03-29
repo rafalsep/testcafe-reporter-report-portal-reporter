@@ -13,9 +13,9 @@
   "scripts": {
     "prettier": "prettier --write '{src,test}/**/*.js'",
     "test": "jest",
+    "test:coverage": "jest",
     "lint": "eslint {src,test}/**/*.js",
-    "publish-please": "publish-please",
-    "prepublish": "publish-please guard"
+    "lint:fix": "eslint {src,test}/**/*.js --fix"
   },
   "keywords": [
     "testcafe",
@@ -33,7 +33,6 @@
     "eslint-plugin-prettier": "4.0.0",
     "jest": "27.5.1",
     "prettier": "2.6.1",
-    "publish-please": "5.5.2",
     "strip-ansi": "6.0.1",
     "testcafe": "1.18.4"
   },

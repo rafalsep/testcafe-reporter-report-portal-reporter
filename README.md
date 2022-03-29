@@ -1,7 +1,7 @@
 # testcafe-reporter-report-portal
 [![Build Status](https://travis-ci.org/rafalsep/testcafe-reporter-report-portal.svg)](https://travis-ci.org/rafalsep/testcafe-reporter-report-portal)
 
-This is the **report-portal** reporter plugin for [TestCafe](http://devexpress.github.io/testcafe).
+This is the [report-portal](https://reportportal.io/) reporter plugin for [TestCafe](http://devexpress.github.io/testcafe).
 
 <p align="center">
     <img src="https://raw.github.com/rafalsep/testcafe-reporter-report-portal/master/media/preview.png" alt="preview" />
@@ -15,7 +15,7 @@ This is the **report-portal** reporter plugin for [TestCafe](http://devexpress.g
 - reports run and test time accurately
 
 ## Prerequisite
-In order to use Report Portal plugin for test cafe, report portal need to installed first. Follow [setup in official docs](https://reportportal.io/installation) for installation instructions.
+In order to use Report Portal plugin for testcafe, [Report Portal](https://reportportal.io/) need to installed first. Follow [setup in official docs](https://reportportal.io/installation) for installation instructions.
 
 ## Install
 ```
@@ -24,19 +24,14 @@ npm install testcafe-reporter-report-portal
 
 ## Setup
 Once installed add required env variables to use the plugin. Good idea is to use [env-cmd](https://github.com/toddbluhm/env-cmd) or [dot-env](https://github.com/motdotla/dotenv) to simplify the setup.
-```
-REPORT_PORTAL_BASE_URL=http://example.com
-REPORT_PORTAL_TOKEN=XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX
-REPORT_PORTAL_PROJECT_NAME=My_Demo
-# Launch name is optional, if not specified the name will default to the project name
-REPORT_PORTAL_LAUNCH_NAME=The Launch Name
-# Description is optional
-REPORT_PORTAL_DESCRIPTION=Run description
-```
 
-- REPORT_PORTAL_BASE_URL - is the url of report portal instance including protocol and port, on local usually http://localhost:8080
-- REPORT_PORTAL_TOKEN can be taken from report portal -> user profile -> access token
-- REPORT_PORTAL_PROJECT_NAME - need to match project name in report portal
+| Required | Argument                      | Description                                                         | Example                              |
+| -------- | ----------------------------- | ------------------------------------------------------------------- | ------------------------------------ |
+| Yes      | REPORT_PORTAL_BASE_URL        | url of report portal instance including protocol and port           | http://<IP_ADDRESS>:8080             |
+| Yes      | REPORT_PORTAL_TOKEN           | can be taken from report portal -> user profile -> access token     | d19fb675-5ebc-4104-a6c7-fc44e18d27de |
+| Yes      | REPORT_PORTAL_PROJECT_NAME    | need to match project name in report portal                         | superadmin_personal                  |
+| No       | REPORT_PORTAL_LAUNCH_NAME     | if not specified the name will default to the project name          | Sanity                               |
+| No       | REPORT_PORTAL_DESCRIPTION     | additional information about the launch                             | Some custom description              |
 
 ## Usage
 When you run tests from the command line, specify the reporter name by using the `--reporter` option:
