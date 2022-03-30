@@ -64,7 +64,7 @@ class ReportPortalService {
       status = errors.length > 0 ? 'failed' : 'passed';
     }
 
-    this.rpClient.finishTestItem(rpTestId, { status, ...(status === 'skipped' ? { issue_type: 'NOT_ISSUE' } : {}) });
+    this.rpClient.finishTestItem(rpTestId, { status, ...status === 'skipped' ? { issue_type: 'NOT_ISSUE' } : {} });
   }
 
   finishFixture({ fixtureId }) {
