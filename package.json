@@ -1,7 +1,7 @@
 {
   "name": "testcafe-reporter-report-portal-reporter",
   "version": "0.2.0",
-  "description": "report-portal TestCafe reporter plugin.",
+  "description": "TestCafe reporter plugin for Report Portal",
   "repository": "https://github.com/rafalsep/testcafe-reporter-report-portal-reporter",
   "author": {
     "name": "Rafal Szczepankiewicz"
@@ -15,6 +15,7 @@
     "test": "jest",
     "test:update": "jest -u",
     "test:coverage": "jest",
+    "example": "node example/index.js",
     "lint": "eslint {src,test}/**/*.js",
     "lint:fix": "eslint {src,test}/**/*.js --fix"
   },
@@ -26,16 +27,23 @@
   ],
   "license": "MIT",
   "devDependencies": {
-    "@reportportal/client-javascript": "5.0.6",
     "babel-eslint": "10.0.1",
     "callsite-record": "4.1.4",
+    "dotenv": "16.0.0",
     "eslint": "7.32.0",
     "eslint-config-prettier": "8.5.0",
     "eslint-plugin-prettier": "4.0.0",
+    "eslint-plugin-testcafe-community": "2.0.0",
     "jest": "27.5.1",
     "prettier": "2.6.1",
-    "strip-ansi": "6.0.1",
-    "testcafe": "1.18.4"
+    "testcafe": "1.x"
+  },
+  "dependencies": {
+    "@reportportal/client-javascript": "5.0.6",
+    "strip-ansi": "6.0.1"
+  },
+  "peerDependencies": {
+    "testcafe": "1.x"
   },
   "jest": {
     "roots": [
