@@ -29,13 +29,13 @@
   "devDependencies": {
     "babel-eslint": "10.0.1",
     "callsite-record": "4.1.4",
-    "dotenv": "16.0.0",
-    "eslint": "7.32.0",
+    "dotenv": "16.0.1",
+    "eslint": "8.17.0",
     "eslint-config-prettier": "8.5.0",
     "eslint-plugin-prettier": "4.0.0",
     "eslint-plugin-testcafe-community": "2.0.0",
-    "jest": "27.5.1",
-    "prettier": "2.6.1",
+    "jest": "28.1.1",
+    "prettier": "2.7.0",
     "testcafe": "1.x"
   },
   "dependencies": {
