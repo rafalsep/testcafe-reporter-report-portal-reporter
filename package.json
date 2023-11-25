@@ -1,6 +1,6 @@
 {
   "name": "testcafe-reporter-report-portal-reporter",
-  "version": "2.0.0",
+  "version": "3.0.0",
   "description": "TestCafe reporter plugin for Report Portal",
   "repository": "https://github.com/rafalsep/testcafe-reporter-report-portal-reporter",
   "author": {
@@ -36,14 +36,14 @@
     "eslint-plugin-testcafe-community": "2.0.0",
     "jest": "29.0.3",
     "prettier": "2.7.1",
-    "testcafe": "2.x"
+    "testcafe": "3.x"
   },
   "dependencies": {
     "@reportportal/client-javascript": "5.0.6",
     "strip-ansi": "6.0.1"
   },
   "peerDependencies": {
-    "testcafe": "1.x || 2.x"
+    "testcafe": "1.x || 2.x || 3.x"
   },
   "jest": {
     "roots": [

@@ -15,12 +15,16 @@ const reportPortalReporter = () => ({
   noColors: false,
 
   reportTaskStart(startTime, userAgents, testCount, taskStartInfo) {
-    const { productReport, launchId, instanceCount } = getReportPortalInstance();
+    try {
+      const { productReport, launchId, instanceCount } = getReportPortalInstance();
 
-    this.productReport = productReport;
-    this.launchId = launchId;
-    this.instanceCount = instanceCount;
-    this.taskStartInfo = taskStartInfo;
+      this.productReport = productReport;
+      this.launchId = launchId;
+      this.instanceCount = instanceCount;
+      this.taskStartInfo = taskStartInfo;
+    } catch (e) {
+      console.error('error in reportTaskStart ', e);
+    }
   },
 
   reportFixtureStart(/* name, path, meta */) {
@@ -31,50 +35,66 @@ const reportPortalReporter = () => ({
 
   reportTestStart(name, testMeta, testStartInfo) {
     // FIXME workaround for broken reportFixtureStart
-    const matchingFixture = this.taskStartInfo.find(task => task.fixture.tests.some(test => test.id === testStartInfo.testId)).fixture;
-    if (matchingFixture.tests.filter(({ testStatus }) => [TEST_STATUSES.STARTED, TEST_STATUSES.COMPLETED].includes(testStatus)).length === 0) {
-      matchingFixture.tests.find(test => test.id === testStartInfo.testId).testStatus = TEST_STATUSES.STARTED;
-      const rpSuiteId = this.productReport.initSuiteItem({ launchId: this.launchId, name: `${matchingFixture.name}` });
-      matchingFixture.rpSuiteId = rpSuiteId;
-    } else {
-      matchingFixture.tests.find(test => test.id === testStartInfo.testId).testStatus = TEST_STATUSES.STARTED;
+    try {
+      const matchingFixture = this.taskStartInfo.find(task => task.fixture.tests.some(test => test.id === testStartInfo.testId)).fixture;
+      if (matchingFixture.tests.filter(({ testStatus }) => [TEST_STATUSES.STARTED, TEST_STATUSES.COMPLETED].includes(testStatus)).length === 0) {
+        matchingFixture.tests.find(test => test.id === testStartInfo.testId).testStatus = TEST_STATUSES.STARTED;
+        const rpSuiteId = this.productReport.initSuiteItem({ launchId: this.launchId, name: `${matchingFixture.name}` });
+        matchingFixture.rpSuiteId = rpSuiteId;
+      } else {
+        matchingFixture.tests.find(test => test.id === testStartInfo.testId).testStatus = TEST_STATUSES.STARTED;
+      }
+
+      const fixtureId = this.taskStartInfo.find(task => task.fixture.tests.some(test => test.id === testStartInfo.testId)).fixture.rpSuiteId;
+      const rpTestId = this.productReport.initTestItem({ launchId: this.launchId, fixtureId, name: `${name}`, attributes: parseMeta(testMeta) });
+
+      this.taskStartInfo.reduce((acc, task) => acc.concat(task.fixture.tests), []).find(test => test.id === testStartInfo.testId).rpTestId = rpTestId;
+    } catch (e) {
+      console.error('error in reportTestStart ', e);
     }
-
-    const fixtureId = this.taskStartInfo.find(task => task.fixture.tests.some(test => test.id === testStartInfo.testId)).fixture.rpSuiteId;
-    const rpTestId = this.productReport.initTestItem({ launchId: this.launchId, fixtureId, name: `${name}`, attributes: parseMeta(testMeta) });
-
-    this.taskStartInfo.reduce((acc, task) => acc.concat(task.fixture.tests), []).find(test => test.id === testStartInfo.testId).rpTestId = rpTestId;
   },
 
   reportTestDone(name, testRunInfo) {
-    const rpTestId = this.taskStartInfo.reduce((acc, task) => acc.concat(task.fixture.tests), []).find(test => test.id === testRunInfo.testId).rpTestId;
-    const hasErr = !!testRunInfo.errs.length;
-    const errors = hasErr ? testRunInfo.errs.map(err => stripAnsi(this.formatError(err))) : [];
+    try {
+      const rpTestId = this.taskStartInfo.reduce((acc, task) => acc.concat(task.fixture.tests), []).find(test => test.id === testRunInfo.testId).rpTestId;
+      const hasErr = !!testRunInfo.errs.length;
+      const errors = hasErr ? testRunInfo.errs.map(err => stripAnsi(this.formatError(err))) : [];
 
-    this.productReport.endTestItem({ name: `${name}`, testRunInfo, errors, rpTestId });
-    this.taskStartInfo.reduce((acc, task) => acc.concat(task.fixture.tests), []).find(test => test.id === testRunInfo.testId).testStatus = TEST_STATUSES.COMPLETED;
+      this.productReport.endTestItem({ name: `${name}`, testRunInfo, errors, rpTestId });
+      this.taskStartInfo.reduce((acc, task) => acc.concat(task.fixture.tests), []).find(test => test.id === testRunInfo.testId).testStatus = TEST_STATUSES.COMPLETED;
 
-    const matchingFixture = this.taskStartInfo.find(({ fixture }) => fixture.tests.some(test => test.id === testRunInfo.testId)).fixture;
-    const isFixtureFinished = matchingFixture.tests.every(({ testStatus }) => testStatus === TEST_STATUSES.COMPLETED);
+      const matchingFixture = this.taskStartInfo.find(({ fixture }) => fixture.tests.some(test => test.id === testRunInfo.testId)).fixture;
+      const isFixtureFinished = matchingFixture.tests.every(({ testStatus }) => testStatus === TEST_STATUSES.COMPLETED);
 
-    if (isFixtureFinished) {
-      this.productReport.finishFixture({
-        fixtureId: matchingFixture.rpSuiteId,
-      });
+      if (isFixtureFinished) {
+        this.productReport.finishFixture({
+          fixtureId: matchingFixture.rpSuiteId,
+        });
+      }
+    } catch (e) {
+      console.error('error in reportTestDone ', e);
     }
   },
 
   async reportTaskDone() {
-    this.instanceCount -= 1;
-    if (this.instanceCount === 0) {
-      await this.productReport.finishLaunch(this.launchId);
+    try {
+      this.instanceCount -= 1;
+      if (this.instanceCount === 0) {
+        await this.productReport.finishLaunch(this.launchId);
+      }
+    } catch (e) {
+      console.error('error in reportTaskDone ', e);
     }
   },
 });
 
 process.on('exit', async code => {
-  if (code > 128) {
-    await this.productReport.finishLaunch(this.launchId);
+  try {
+    if (code > 128) {
+      await this.productReport.finishLaunch(this.launchId);
+    }
+  } catch (e) {
+    console.error('error in process.exit ', e);
   }
 });
 
